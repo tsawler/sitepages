@@ -19,7 +19,7 @@ CKEDITOR.dialog.add('sitepagesDialog', function(editor) {
 
                 onLoad: function(element) {
                     var element_id = '#' + this.getInputElement()
-                        .$.id;
+                            .$.id;
 
                     $.getJSON(
                         '/admin/pages/pages.json',
@@ -27,14 +27,14 @@ CKEDITOR.dialog.add('sitepagesDialog', function(editor) {
                             var html = '';
                             var len = jsondata.length;
                             for (var i = 0; i <
-                                len; i++) {
+                            len; i++) {
                                 html +=
                                     '<option value="/' +
                                     jsondata[i]
-                                    .value +
+                                        .value +
                                     '">' +
                                     jsondata[i]
-                                    .option +
+                                        .option +
                                     '</option>';
                             }
                             $(element_id).append(
@@ -63,14 +63,8 @@ CKEDITOR.dialog.add('sitepagesDialog', function(editor) {
         },
         onOk: function() {
             var dialog = this;
-            var selection;
 
-            if (CKEDITOR.env.ie) {
-                selection = editor.getSelection().document.$.selection
-                    .createRange().text;
-            } else {
-                selection = editor.getSelection().getNative();
-            }
+            var selection = editor.getSelection().getSelectedText();
 
             var link = editor.document.createElement('a');
             link.setAttribute('href', dialog.getValueOf('tab-basic',
@@ -82,3 +76,4 @@ CKEDITOR.dialog.add('sitepagesDialog', function(editor) {
         }
     };
 });
+y6
